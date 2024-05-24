@@ -1,0 +1,17 @@
+---
+import type IProfile from "../../data/types/profile.type";
+import profileImage from "../../assets/image/profile.jpg"
+import { Image } from "astro:assets";
+interface Props{
+    profile:IProfile
+}
+---
+<nav id="sidebar" class="fixed top-0 left-0 flex flex-col items-center py-5 transition-all duration-500 ease-linear w-[70vw] h-screen xl:hidden bg-white dark:bg-[#282a36] bg-opacity-50 dark:bg-opacity-50 backdrop-blur-md z-50 -translate-x-full">
+    <Image
+        src={profileImage}
+        alt="profile"
+        width={500}
+        height={500}
+        class="w-[150px] h-[150px] rounded-full shadow-lg shadow-gray-300 dark:shadow-gray-600"
+      />
+</nav>

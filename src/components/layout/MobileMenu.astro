@@ -1,0 +1,23 @@
+---
+import MenuIcon from "../../assets/svg/astro/MenuIcon.astro";
+import Language from "../profile/Language.astro";
+import Theme from "../profile/Theme.astro";
+---
+<header class="fixed flex flex-row-reverse xl:hidden w-[90vw] bg-white dark:bg-[#282a36] h-10 top-2 rounded-2xl z-40 bg-opacity-40 dark:bg-opacity-40 backdrop-blur-sm items-center justify-between px-2">
+    <figure id="menuIcon" class="text-gray-500 dark:text-white">
+        <MenuIcon />
+        <script>
+            const menuIcon = document.getElementById('menuIcon');
+            menuIcon?.addEventListener('click',()=>{
+                const sidebar = document.getElementById('sidebar');
+                if(sidebar?.classList.contains('-translate-x-full')){
+                    sidebar?.classList.remove('-translate-x-full');
+                }else{
+                    sidebar?.classList.add('-translate-x-full');
+                }
+            })
+        </script>
+    </figure>
+    <Language />
+    <Theme />
+</header>

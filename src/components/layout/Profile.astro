@@ -13,47 +13,55 @@ const { profile, lang }: Props = Astro.props;
 ---
 
 <aside
-  class="xl:flex xl:col-span-2 flex-col hidden w-full h-[75%] border-[1px] overflow-hidden select-none border-slate-300 dark:border-slate-800 rounded-2xl px-4 py-2 items-center shadow-lg shadow-slate-300 dark:bg-[#282a36] dark:shadow-[#282a36] bg-white"
+  class="xl:flex hidden col-span-1 xl:col-span-2 flex-col w-full h-fit border-[1px] overflow-hidden select-none border-slate-300 dark:border-slate-800 rounded-2xl px-4 py-2 items-center shadow-lg shadow-slate-300 dark:bg-[#282a36] dark:shadow-[#282a36] bg-white"
 >
-  <div class="flex flex-col items-center w-[80%] h-full pb-10 gap-5">
-    <div class="flex flex-col items-center gap-2 w-full">
-        <div class="flex flex-row items-center justify-between w-full">
-            <Theme />
-            <Language />
-          </div>
-          <div class="flex items-center justify-center w-full">
-            <Image
-              src={profileImage}
-              alt="profile"
-              width={500}
-              height={500}
-              class="w-[200px] h-[200px] rounded-full shadow-lg shadow-gray-300 dark:shadow-gray-600"
-            />
-          </div>
+  <div class="flex flex-col items-center gap-2 w-full">
+    <div class="flex flex-row items-center justify-between w-full">
+      <Theme />
+      <Language />
     </div>
-    <nav class="w-full">
-      <ul class="flex flex-col items-center flex-wrap max-w-full">
-        {
-          profile.items.map((item) => (
-            <a href={getRelativeLocaleUrl(lang, item.href)} class="w-full hover:bg-indigo-700 rounded-2xl">
-              <span
-                class="flex flex-row items-center justify-center w-full py-2 text-lg xl:text-xl font-semibold text-slate-900 dark:text-slate-100 hover:text-slate-800 dark:hover:text-slate-200"
-              >
-                {item.label}
-              </span>
-            </a>
-          ))
-        }
-      </ul>
-    </nav>
-    <ul class="flex flex-row items-center justify-center w-full gap-2 flex-wrap">
+    <div class="flex items-center justify-center w-full">
+      <Image
+        src={profileImage}
+        alt="profile"
+        width={500}
+        height={500}
+        class="w-[200px] h-[200px] rounded-full shadow-lg shadow-gray-300 dark:shadow-gray-600"
+      />
+    </div>
+  </div>
+  <nav class="w-full">
+    <ul class="flex flex-col items-center flex-wrap max-w-full">
       {
-        profile.icons.map((icon, index) => (
-          <li class="w-[15%]">
-            <a target="_blank" href={icon.href === "/contact" ? getRelativeLocaleUrl(lang, icon.href) : icon.href}>{<icon.label />}</a>
-          </li>
+        profile.items.map((item) => (
+          <a
+            href={getRelativeLocaleUrl(lang, item.href)}
+            class="w-full hover:bg-indigo-700 rounded-2xl"
+          >
+            <span class="flex flex-row items-center justify-center w-full py-2 text-lg xl:text-xl font-semibold text-slate-900 dark:text-slate-100 hover:text-slate-800 dark:hover:text-slate-200">
+              {item.label}
+            </span>
+          </a>
         ))
       }
     </ul>
-  </div>
+  </nav>
+  <ul class="flex flex-row items-center justify-center w-full gap-2 flex-wrap">
+    {
+      profile.icons.map((icon, index) => (
+        <li class="w-[15%]">
+          <a
+            target="_blank"
+            href={
+              icon.href === "/contact"
+                ? getRelativeLocaleUrl(lang, icon.href)
+                : icon.href
+            }
+          >
+            {<icon.label />}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
 </aside>
