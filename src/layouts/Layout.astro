@@ -7,9 +7,10 @@ interface Props {
 	section_title: string;
 	section_subtitle: string;
 	profile: IProfile
+	over_hidden?: boolean
 }
 
-const { lang, page_title, section_title, section_subtitle, profile }:Props = Astro.props;
+const { lang, page_title, section_title, section_subtitle, profile, over_hidden }:Props = Astro.props;
 ---
 
 <!doctype html>
@@ -22,10 +23,10 @@ const { lang, page_title, section_title, section_subtitle, profile }:Props = Ast
 		<meta name="generator" content={Astro.generator} />
 		<title>{page_title}</title>
 	</head>
-	<body class="bg-[#e3e9f4] dark:bg-[#1f202a] overflow-y-auto overflow-x-hidden flex flex-col gap-5 items-center justify-center w-screen h-screen xl:py-5">
+	<body class="bg-[#e3e9f4] dark:bg-[#1f202a]  overflow-hidden flex flex-col gap-5 items-center justify-center w-screen h-screen xl:py-5">
 		<main class="w-full xl:w-[95%] h-full relative grid grid-cols-1 xl:grid-cols-11 gap-5">
 			<Profile lang={lang} profile={profile}/>
-			<div class="flex relative hidde-scroll overflow-x-hidden overflow-y-auto flex-col col-span-1 text-black dark:text-white xl:col-span-9 w-full h-full border-[1px] border-slate-300 dark:border-slate-800 rounded-2xl items-center bg-white dark:bg-[#282a36]">
+			<div class={`flex relative hidde-scroll overflow-x-hidden ${over_hidden ? "overflow-y-hidden":"overflow-y-auto"} flex-col col-span-1 text-black dark:text-white xl:col-span-9 w-full h-full border-[1px] border-slate-300 dark:border-slate-800 rounded-2xl items-center bg-white dark:bg-[#282a36]`}>
 				<slot/>
 			</div>
 		</main>
