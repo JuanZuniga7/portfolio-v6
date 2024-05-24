@@ -1,0 +1,75 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import profile from "../../lang/en/Profile";
+import FloatingBg from "../../components/home/FloatingBg.astro";
+import { Image } from "astro:assets";
+import character from "../../assets/image/character.png";
+import personal_data from "../../lang/en/personal_data"
+---
+<Layout lang="en" page_title="Home" section_title="" section_subtitle="" profile={profile}>
+    <div class="absolute w-full h-full bg-opacity-0 z-0 overflow-hidden">
+        <FloatingBg />
+    </div>
+    <div class="absolute w-full h-full bg-opacity-0 z-10 flex flex-col gap-4 items-center text-center top-[2%] xl:top-[15%] select-none text-sky-600 dark:text-indigo-400">        
+        <h4 class="text-4xl xl:text-6xl font-serif italic font-semibold">{profile.name}</h4>
+        <div class="flex flex-row xl:text-3xl font-mono font-semibold items-center justify-center gap-2 xl:gap-2 mx-auto select-none">
+            <span>I'm</span>
+            <span id="text"></span>
+            <span class="text-black dark:text-white fade-in-out">_</span>
+        </div>
+        <div class="flex flex-col items-center text-sm xl:text-xl font-serif font-semibold text-indigo-200 w-[80%] xl:w-[60%] gap-2 xl:gap-4">
+            {personal_data.description.map((desc) => (
+                <span>{desc}</span>
+            ))}
+        </div>
+    </div>
+    <figure class="relative bottom-0 flex items-end justify-center w-full h-full p-4">
+        <Image src={character} alt="Character" width={500} height={500} class="w-40 h-40 2xl:w-64 2xl:h-64" />
+    </figure>
+    <script>
+        import personal_data from "../../lang/en/personal_data";
+        const text = document.getElementById('text');
+        if(text){
+            // text animation write char by char word with 1s delay and then remove char by char with 0.5s delay
+            let wordIndex = 0;
+            let charIndex = 0;
+            let isAdding = true;
+            let isRemoving = false;
+            setInterval(() => {
+                if(isAdding){
+                    text.textContent = personal_data.profiles[wordIndex].substring(0, charIndex);
+                    charIndex++;
+                    if(charIndex === personal_data.profiles[wordIndex].length){
+                        // wait for 1s
+                        setTimeout(() => {
+                            isAdding = false;
+                            isRemoving = true;
+                        }, 500);
+                    }
+                }else{
+                    text.textContent = personal_data.profiles[wordIndex].substring(0, charIndex);
+                    charIndex--;
+                    if(charIndex === 0){
+                        isAdding = true;
+                        isRemoving = false;
+                        wordIndex++;
+                    }
+                }
+                if(personal_data.profiles.length === wordIndex) wordIndex = 0;
+            }, 100);
+        }
+    </script>
+</Layout>
+<style is:global>
+    @keyframes fadeInOut {
+        0%, 100% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+    }
+    .fade-in-out {
+        animation: fadeInOut .8s infinite;
+    }
+</style>
