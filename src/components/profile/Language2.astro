@@ -3,12 +3,12 @@ import Lang from "../../assets/svg/astro/Lang.astro";
 ---
 
 <figure
-  id="lang"
+  id="lang2"
   class="scale-90 hover:cursor-pointer hover:bg-indigo-200 dark:hover:bg-indigo-800 dark:text-white rounded-full"
 >
   <Lang/>
   <script>
-    document.getElementById("lang")?.addEventListener("click", () => {
+    document.getElementById("lang2")?.addEventListener("click", () => {
       const path = window.location.pathname;
       if (path.startsWith("/en")) {
         window.location.href = "/es";
