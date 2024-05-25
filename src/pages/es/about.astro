@@ -9,14 +9,14 @@ import education from "../../lang/es/education";
 ---
 
 <Layout lang="es" page_title="About Me" profile={profile}>
-    <div class="flex flex-col gap-5 w-full h-full dark:text-white">
-        <div class="xl:text-6xl"><SectionTitle title="Sobre Mi" /></div>
-        <div class="flex flex-col w-full xl:gap-8">
+    <div class="flex flex-col gap-5 w-full h-full dark:text-white px-2">
+        <div class="text-2xl xl:text-6xl"><SectionTitle title="Sobre Mi" /></div>
+        <div class="flex flex-col w-full gap-5 xl:gap-8">
             {about.sections.map((item) => (
                 <Section data={item} />
             ))}
         </div>
-        <div class="xl:text-6xl"><SectionTitle title="Mi Educación" /></div>
+        <div class="text-2xl xl:text-6xl"><SectionTitle title="Mi Educación" /></div>
         <Education education={education}/>
     </div>
 </Layout>
