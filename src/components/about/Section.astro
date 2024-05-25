@@ -1,0 +1,28 @@
+---
+import type { IAboutSection } from "../../data/types/about.types";
+interface Props {
+  data: IAboutSection;
+}
+const { data }: Props = Astro.props;
+---
+
+<section class="flex flex-col gap-2">
+  <div>
+    <h4 class="font-serif xl:text-4xl italic text-indigo-600 dark:text-indigo-400">{data.title}</h4>
+    <p class="text-lg font-mono font-thin text-sky-600 dark:text-sky-400">{data.subtitle}</p>
+  </div>
+  <div class="font-thin font-serif text-lg flex-wrap flex flex-col gap-2">
+    {data.content.map((item) => (
+        <div class="flex flex-col gap-1">
+            <span>{item.data}</span>
+            {item.list && (
+                <ul class="list-disc list-inside">
+                    {item.list.map((listItem) => (
+                        <li>{listItem}</li>
+                    ))}
+                </ul>
+            )}
+        </div>
+      ))}
+  </div>
+</section>

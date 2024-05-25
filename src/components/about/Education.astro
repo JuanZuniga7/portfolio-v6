@@ -1,0 +1,32 @@
+---
+import type IEducation from "../../data/types/education.types";
+import Institution from "./Intitution.astro";
+interface Props {
+  education: IEducation[];
+}
+const { education }: Props = Astro.props;
+---
+
+<section class="flex flex-col items-center justify-center xl:mt-10">
+  {
+    education.map((item) => (
+      <div class="w-full flex flex-col items-center justify-center gap-5">
+        <h4 class="w-full text-center text-2xl font-serif font-light gap-10">
+          {item.title}
+        </h4>
+        <div class="w-full flex flex-col justify-center items-center">
+          {item.institutions.map((institution, index) => (
+            <Institution
+              text1={institution.name}
+              text2={institution.degree}
+              done={institution.done}
+              date={`${institution.start} ${institution.end !== "" ? ` : ${institution.end} ` : ""}`}
+              right={index % 2 === 1}
+              last={index + 1 === item.institutions.length}
+            />
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</section>

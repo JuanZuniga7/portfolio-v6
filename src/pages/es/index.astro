@@ -1,0 +1,101 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import profile from "../../lang/es/profile";
+import personal_data from "../../lang/es/personal_data";
+import character from "../../assets/image/character.png";
+import Image from "astro/components/Image.astro";
+import FloatingBg from "../../components/home/FloatingBg.astro";
+---
+
+<Layout lang="es" page_title="Profilio" profile={profile}>
+  <div class="flex-col items-center w-full h-full relative justify-center">
+    <figure class="w-full flex justify-center">
+      <Image
+        src={character}
+        alt="Character"
+        width={500}
+        height={500}
+        class="w-40 h-40 2xl:w-64 2xl:h-64"
+      />
+    </figure>
+    <div
+      class="absolute w-full h-full top-0 right-0 bg-opacity-0 z-0 overflow-hidden"
+    >
+      <FloatingBg />
+    </div>
+    <div
+      class="w-full h-full bg-opacity-0 z-10 flex flex-col gap-4 items-center text-center xl:top-[15%] select-none text-sky-600 dark:text-indigo-400"
+    >
+      <h4
+        class="text-4xl sm:text-5xl 2xl:text-6xl font-serif italic font-semibold"
+      >
+        {profile.name}
+      </h4>
+      <div
+        class="flex flex-row text-lg sm:text-2xl xl:text-3xl 2xl:text-4xl font-mono font-semibold items-center justify-center gap-2 sm:gap-4 mx-auto select-none"
+      >
+        <span>I'm</span>
+        <span id="text"></span>
+        <span class="text-black dark:text-white fade-in-out">_</span>
+      </div>
+      <div
+        class="flex flex-col items-center text-sm sm:text-lg 2xl:text-xl font-serif font-semibold text-gray-500 dark:text-indigo-200 w-[80%] xl:w-[60%] gap-2 xl:gap-4"
+      >
+        {personal_data.description.map((desc) => <span>{desc}</span>)}
+      </div>
+    </div>
+  </div>
+  <script>
+    import personal_data from "../../lang/en/personal_data";
+    const text = document.getElementById("text");
+    if (text) {
+      // text animation write char by char word with 1s delay and then remove char by char with 0.5s delay
+      let wordIndex = 0;
+      let charIndex = 0;
+      let isAdding = true;
+      let isRemoving = false;
+      setInterval(() => {
+        if (isAdding) {
+          text.textContent = personal_data.profiles[wordIndex].substring(
+            0,
+            charIndex
+          );
+          charIndex++;
+          if (charIndex === personal_data.profiles[wordIndex].length) {
+            // wait for 1s
+            setTimeout(() => {
+              isAdding = false;
+              isRemoving = true;
+            }, 500);
+          }
+        } else {
+          text.textContent = personal_data.profiles[wordIndex].substring(
+            0,
+            charIndex
+          );
+          charIndex--;
+          if (charIndex === 0) {
+            isAdding = true;
+            isRemoving = false;
+            wordIndex++;
+          }
+        }
+        if (personal_data.profiles.length === wordIndex) wordIndex = 0;
+      }, 100);
+    }
+  </script>
+</Layout>
+<style is:global>
+  @keyframes fadeInOut {
+    0%,
+    100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  .fade-in-out {
+    animation: fadeInOut 0.8s infinite;
+  }
+</style>

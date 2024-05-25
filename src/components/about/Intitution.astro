@@ -1,0 +1,39 @@
+---
+interface Props {
+  text1: string;
+  text2: string;
+  date: string;
+  done: boolean;
+  last?: boolean;
+  right?: boolean;
+}
+const { text1, text2, date, done, last, right }: Props = Astro.props;
+---
+
+<div
+  class="w-[60%] flex flex-row items-center justify-center relative text-lg font-thin font-serif italic h-[70px]"
+>
+  <div
+    class={`absolute ${right ? "right-0 text-left" : "left-0 text-right"} w-2/5 flex flex-col`}
+  >
+    <span class="text-indigo-600 dark:text-indigo-300">{text1}</span>
+    <span>{text2}</span>
+  </div>
+  <div
+    class={`text-transparent ${done ? "bg-green-500" : "bg-amber-500"} z-10 rounded-full w-4 h-4`}
+  >
+    .
+  </div>
+  <div
+    class={`absolute w-2/5 ${right ? "left-0 text-right" : "right-0 text-left"}`}
+  >
+    <span class="text-indigo-600 dark:text-indigo-300"> {date}</span>
+  </div>
+  {
+    last === false && (
+      <div
+        class={`absolute h-[70px] w-2 ${done ? "bg-green-500" : "bg-amber-500"} top-1/2`}
+      />
+    )
+  }
+</div>

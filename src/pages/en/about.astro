@@ -1,0 +1,16 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import profile from "../../lang/en/Profile";
+import about from "../../lang/en/about";
+import SectionTitle from "../../components/common/SectionTitle.astro";
+import Section from "../../components/about/Section.astro";
+---
+
+<Layout lang="en" page_title="About Me" profile={profile}>
+    <div class="flex flex-col gap-5 w-full h-full dark:text-white">
+        <div class="xl:text-6xl"><SectionTitle title="About Me" /></div>
+        {about.sections.map((item) => (
+            <Section data={item} />
+        ))
+    </div>
+</Layout>

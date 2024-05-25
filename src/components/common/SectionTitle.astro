@@ -1,0 +1,33 @@
+---
+interface Props {
+  title: string;
+}
+const { title }: Props = Astro.props;
+---
+
+<div class="section-title text-start font-serif py-2 border-b-2 border-gray-400 dark:border-indigo-300">
+    <h4 class="bg-gradient-to-r from-rose-300 via-indigo-300 to-sky-300 dark:from-rose-600 dark:via-indigo-600 dark:to-sky-600">{title}</h4>
+  </div>
+<style>
+  .section-title h4 {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 2s linear infinite;
+    display: inline-block;
+  }
+
+  @keyframes textclip {
+    to {
+      background-position: 200% center;
+    }
+  }
+</style>
