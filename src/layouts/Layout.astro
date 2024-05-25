@@ -24,13 +24,13 @@ const { lang, page_title, profile, over_hidden }: Props = Astro.props;
     <title>{page_title}</title>
   </head>
   <body
-    class="bg-[#e3e9f4] dark:bg-[#1f202a] overflow-x-hidden relative overflow-y-auto px-4 flex flex-col gap-5 xl:gap-10 items-center xl:items-end w-screen min-h-screen transition-all duration-300 ease-linear"
+    class="bg-[#e3e9f4] dark:bg-[#1f202a] xl:pr-10 overflow-x-hidden relative overflow-y-auto px-4 flex flex-col gap-5 xl:gap-10 items-center xl:items-end w-screen min-h-screen transition-all duration-300 ease-linear"
   >
     <MenuDrawer lang={lang} profile={profile} />
     <MobileMenu />
     <Profile lang={lang} profile={profile} />
     <main
-      class="mt-14 xl:mt-0 relative pt-4 xl:px-5 xl:pt-8 xl:right-20 xl:top-5 border-[1px] w-full xl:w-[75%] h-full flex gap-5 xl:gap-10
+      class="mt-14 xl:mt-0 relative pt-4 xl:px-5 xl:pt-8 xl:top-5 border-[1px] w-full xl:w-[75%] 2xl:w-[78%] 3xl:w-[81%] h-full flex gap-5 xl:gap-10
        flex-col justify-between border-slate-300 dark:border-slate-800 rounded-2xl dark:bg-[#282a36] bg-white transition-all duration-300 ease-linear"
     >
       <slot />
