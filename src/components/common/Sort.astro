@@ -1,0 +1,15 @@
+---
+import SortIcon from "../../assets/svg/astro/SortIcon.astro";
+interface Props{
+    lang: string;
+}
+const {lang}:Props = Astro.props;
+---
+<button class="flex flex-row items-center gap-1 outline-none cursor-pointer hover:bg-indigo-600 px-2.5 py-1.5 rounded-2xl hover:text-white">
+    <figure class="w-6 h-6">
+        <SortIcon/>
+    </figure>
+    <span class="text-sm font-semibold">
+        {lang === "en" ? "Sort" : "Ordenar"}
+    </span>
+</button>

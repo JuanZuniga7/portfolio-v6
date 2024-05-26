@@ -6,8 +6,8 @@ import { Image } from "astro:assets";
 import character from "../../assets/image/character.png";
 import personal_data from "../../lang/en/personal_data"
 ---
-<Layout lang="en" page_title="Home" profile={profile} over_hidden>
-    <div class="flex-col items-center w-full h-full relative justify-center">
+<Layout lang="en" page_title="Portfolio" profile={profile} over_hidden>
+    <div class="flex-col items-center w-full h-full relative justify-center overflow-hidden 2xl:py-5 3xl:py-16">
         <figure class="w-full flex justify-center">
             <Image src={character} alt="Character" width={500} height={500} class="w-40 h-40 2xl:w-64 2xl:h-64" />
         </figure>

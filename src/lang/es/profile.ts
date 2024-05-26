@@ -14,8 +14,7 @@ const profile: IProfile = {
         {label: "Inicio", href: "/"},
         {label: "Sobre Mi", href: "/about"},
         {label: "Projectos", href: "/projects"},
-        {label: "Blog", href: "/blog"},
-        {label: "Contacto", href: "/contact"},
+        {label: "Blog", href: "https://www.rustedcor.com"},
     ],
     icons:[
         {label: github, href: "https://github.com/JuanZuniga7"},

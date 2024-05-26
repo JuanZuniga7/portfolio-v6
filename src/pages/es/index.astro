@@ -7,8 +7,8 @@ import Image from "astro/components/Image.astro";
 import FloatingBg from "../../components/home/FloatingBg.astro";
 ---
 
-<Layout lang="es" page_title="Profilio" profile={profile}>
-  <div class="flex-col items-center w-full h-full relative justify-center">
+<Layout lang="es" page_title="Portafolio" profile={profile}>
+  <div class="flex-col items-center w-full h-full relative justify-center overflow-hidden 2xl:py-5 3xl:py-16">
     <figure class="w-full flex justify-center">
       <Image
         src={character}
@@ -39,7 +39,7 @@ import FloatingBg from "../../components/home/FloatingBg.astro";
         <span class="text-black dark:text-white fade-in-out">_</span>
       </div>
       <div
-        class="flex flex-col items-center text-xs sm:text-lg 2xl:text-xl font-serif font-semibold text-gray-500 dark:text-indigo-200 w-[80%] xl:w-[60%] gap-2 xl:gap-4"
+        class="flex flex-col items-center text-xs sm:text-base 2xl:text-xl font-serif font-semibold text-gray-500 dark:text-indigo-200 w-[80%] xl:w-[60%] gap-2 xl:gap-4"
       >
         {personal_data.description.map((desc) => <span>{desc}</span>)}
       </div>
