@@ -1,0 +1,32 @@
+---
+import Institution from "./Intitution.astro"
+import type IExperience from "../../data/types/experience.types";
+interface Props {
+  experience: IExperience;
+}
+const { experience } = Astro.props;
+---
+
+<section class="flex flex-col items-center justify-center xl:mt-10">
+  <div class="w-full flex flex-col items-center justify-center gap-5">
+    <h4
+      class="w-full text-center text-lg xl:text-2xl font-serif font-light gap-10"
+    >
+      {experience.title}
+    </h4>
+    <div class="w-full flex flex-col justify-center items-center">
+      {
+        experience.business.map((business, index) => (
+          <Institution
+            text1={business.name}
+            text2={business.position}
+            done={business.done}
+            date={business.date}
+            right={index % 2 === 1}
+            last={index + 1 === experience.business.length}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

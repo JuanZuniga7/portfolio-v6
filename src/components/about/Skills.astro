@@ -1,0 +1,59 @@
+---
+import type ISkills from "../../data/types/skills.types";
+interface Props {
+  skills: ISkills[];
+  lang: string;
+}
+const { skills, lang }: Props = Astro.props;
+---
+
+<section
+  class="w-full h-fit flex flex-col items-center justify-center xl:mt-10 gap-5 xl:gap-10"
+>
+  {
+    skills.map((skills, index) => (
+      <div class="w-full h-fit flex flex-col items-center justify-center gap-10">
+        <h4 class="w-full text-center text-lg sm:text-xl lg:text-2xl xl:text-3xl font-serif font-light gap-10 italic">
+          {skills.title}
+        </h4>
+        <div class="flex flex-row items-center justify-center flex-wrap gap-y-8 gap-4 w-full">
+          {skills.skills.map((item, index) => (
+            <div class="w-[45%] sm:w-[30%] lg:w-[25%] 2xl:w-[22%] 3xl:w-[18%] border-2 border-slate-200 dark:border-[#363949] shadow-lg transition-all duration-300 ease-linear hover:bg-slate-100 hover:shadow-slate-200 dark:hover:shadow-[#363949] dark:hover:bg-[#2b2e3b] cursor-pointer rounded-2xl flex flex-col items-center justify-center py-5 p-4 gap-2">
+              <div class="flex flex-row gap-2 w-full items-center font-serif font-light justify-start">
+                {item.icon !== null && <item.icon />}
+                <span class="text-sm sm:text-base lg:text-lg">{item.name}</span>
+              </div>
+              <div class="w-full flex flex-col items-start justify-center font-serif font-light text-xs sm:text-sm lg:text-base italic">
+                <span>
+                  <span class="text-sky-600 dark:text-indigo-400 not-italic font-semibold">
+                    {lang === "es" ? "Nivel" : "Level"}:
+                  </span>
+                  {item.cualitative}
+                </span>
+                {item.date && (
+                  <span>
+                    <span class="text-sky-600 dark:text-indigo-400 not-italic font-semibold">
+                      {lang === "es" ? "Inicio" : "Start"}:
+                    </span>
+                    {item.date}
+                  </span>
+                )}
+                {item.main && (
+                  <span>
+                    <span class="text-sky-600 dark:text-indigo-400 not-italic font-semibold">
+                      {lang === "es" ? "Stack Principal" : "Main Stack"}:
+                    </span>
+                    {item.main}
+                  </span>
+                )}
+              </div>
+              <div class="w-full h-2 transition-colors duration-300 ease-linear bg-slate-100 dark:bg-[#363949] rounded-full">
+                <div class={`${item.cuantitative} transition-colors duration-300 ease-linear bg-sky-300 dark:bg-indigo-600 h-2 rounded-full`}/>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</section>

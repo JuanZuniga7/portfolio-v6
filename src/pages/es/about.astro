@@ -6,17 +6,25 @@ import SectionTitle from "../../components/common/SectionTitle.astro";
 import Section from "../../components/about/Section.astro";
 import Education from "../../components/about/Education.astro";
 import education from "../../lang/es/education";
+import Experience from "../../components/about/Experience.astro";
+import experience from "../../lang/es/experience";
+import Skills from "../../components/about/Skills.astro";
+import skills from "../../lang/es/skills";
 ---
 
 <Layout lang="es" page_title="About Me" profile={profile}>
     <div class="flex flex-col gap-5 w-full h-full dark:text-white px-2">
-        <div class="text-2xl xl:text-6xl"><SectionTitle title="Sobre Mi" /></div>
+        <div class="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl"><SectionTitle title="Sobre Mi" /></div>
         <div class="flex flex-col w-full gap-5 xl:gap-8">
             {about.sections.map((item) => (
                 <Section data={item} />
             ))}
         </div>
-        <div class="text-2xl xl:text-6xl"><SectionTitle title="Mi Educación" /></div>
+        <div class="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl"><SectionTitle title="Mi Educación" /></div>
         <Education education={education}/>
+        <div class="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl"><SectionTitle title="Mi Experiencia" /></div>
+        <Experience experience={experience}/>
+        <div class="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl"><SectionTitle title="Mis Habilidades" /></div>
+        <Skills skills={skills} lang="es"/>
     </div>
 </Layout>
