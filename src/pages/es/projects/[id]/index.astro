@@ -1,0 +1,25 @@
+---
+import Carousete from "../../../../components/common/Carousete.astro";
+import profile from "../../../../lang/es/profile";
+import { getProjectById } from "../../../../lang/es/projects";
+import Layout from "../../../../layouts/Layout.astro";
+let {id} = Astro.params;
+if(!id) id = "0";
+const project = getProjectById(parseInt(id));
+---
+<Layout lang="es" profile={profile} page_title={project.name}>
+    <div class="w-full h-full flex flex-col items-center justify-center gap-5">
+        <h4 class="text-indigo-500 dark:text-indigo-400 font-bold text-4xl italic border-b-2 border-gray-600 dark:border-gray-400 w-full text-left">{project.name}</h4>
+        <div class="w-full text-left flex flex-col gap-0.5">
+            <h5 class="text-indigo-500 dark:text-indigo-400 font-serif font-semibold 2xl:text-3xl italic">
+                Porque es importante:
+            </h5>
+            {project.projectDescription.map((description) => (
+                <span class="text-left font-serif xl:text-lg">
+                    {description}
+                </span>
+            ))}
+        </div>
+        <Carousete images={project.images} />
+    </div>
+</Layout>   

@@ -2,20 +2,16 @@
 import Layout from "../../../layouts/Layout.astro";
 import profile from "../../../lang/es/profile";
 import SectionTitle from "../../../components/common/SectionTitle.astro";
-import Searchbar from "../../../components/common/Searchbar.astro";
-import Filters from "../../../components/common/Filters.astro";
-import Sort from "../../../components/common/Sort.astro";
-import ViewMode from "../../../components/common/ViewMode.astro";
+import project from "../../../lang/es/projects"
+import Project from "../../../components/projects/Project.astro";
 ---
 <Layout lang="es" page_title="Proyectos" profile={profile}>
     <div class="flex flex-col w-full h-full gap-5">
         <div class="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl"><SectionTitle title="Proyectos" /></div>
-        <div class="grid grid-cols-1 px-2">
-            <div class="flex flex-row items-center justify-between w-full border-b-2 border-gray-400 dark:border-gray-50 py-2">
-                <Filters lang="es" />
-                <Sort lang="es" />
-                <ViewMode lang="es" />
-            </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 px-2">
+            {project.map((project) => (
+                <Project project={project} />
+            ))}
         </div>
     </div>
 </Layout>
