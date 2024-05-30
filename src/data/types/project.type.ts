@@ -11,10 +11,10 @@ export default interface IProject{
     projectUrl?: string;
     sourceUrl?: string;
     complement: IComplement[];
+    state: "Terminado" | "En Proceso" | "En Espera" | "Cancelado" | "In Progress" | "Finished" | "Waiting" | "Canceled";
 }
 
 export interface IComplement{
     name: string;
-    version: string;
     icon: any;
 }

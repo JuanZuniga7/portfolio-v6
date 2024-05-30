@@ -42,9 +42,10 @@ const projects: IProject[] = [
             "En un futuro tengo pensando aprender Lua para aprender a configurar AwesomeWM y NeoVim, ademas de BSPWM que es otro TWM que me gustaria aprender a configurar.",
         ],
         complement: [
-            {name: "Python", icon: Python, version: ">3.10"},
-            {name: "Bash", icon: Bash, version: "any"}
+            {name: "Python", icon: Python},
+            {name: "Bash", icon: Bash}
         ],
+        state: "En Espera"
     },
     {
         id: 2,
@@ -55,13 +56,18 @@ const projects: IProject[] = [
             pimage1
         ],
         description: "Este es la quinta versión de mi portafolio personal. En esta versión, he rediseñado completamente el sitio web y agregado nuevas funcionalidades.",
-        projectDescription: [],
-        complement:[
-            {name: "Typescript", icon: Typescript, version: "any"},
-            {name: "Tailwindcss", icon: Tailwind, version: "any"},
-            {name: "NextJs", icon: Nextjs, version: "V14"},
-            {name: "React", icon: React, version: "V18"}
+        projectDescription: [
+            "Este proyecto fue basado en otros portafolios que vi en internet, especialmente la parte del codigo, el mayor problema es que el codigo que vi presentaba demasiado boilerplate (codigo repetitivo) y no era muy escalable.",
+            "Por lo que decidi hacer algo similar usando typescript en lugar de javascript y hacer que todos los datos sean recibidos desde archivos JSON y archivos ts que cumplan una interface en lugar de tener todo el texto a mostrar mezclado en el codigo.",
+            "Ademas de que el diseño es completamente mio, y no use ninguna libreria de diseño, solo use Tailwindcss para los estilos y un poco de React para la interactividad.",
         ],
+        complement:[
+            {name: "Typescript", icon: Typescript},
+            {name: "Tailwindcss", icon: Tailwind},
+            {name: "NextJs", icon: Nextjs},
+            {name: "React", icon: React}
+        ],
+        state: "Terminado"
     },
     {
         id: 3,
@@ -72,13 +78,17 @@ const projects: IProject[] = [
             pimage1
         ],
         complement:[
-            {name: "Astro", icon: Astro, version: "V4"},
-            {name: "React", icon: React, version: "V18"},
-            {name: "Typescript", icon: Typescript, version: "any"},
-            {name: "Tailwindcss", icon: Tailwind, version: "any"},
+            {name: "Astro", icon: Astro},
+            {name: "React", icon: React},
+            {name: "Typescript", icon: Typescript},
+            {name: "Tailwindcss", icon: Tailwind},
         ],
         description:"En esta 6ta version el objetivo principal fue el SEO y el performance del sition web. Por lo que cambiar de NextJs a Astro fue la mejor opción.",
-        projectDescription: [],
+        projectDescription: [
+            "Realmente no hay mucho que decir sobre los motivos que me llevaron a realizar este proyecto.",
+            "Mi prioridad siempre es ser claro, conciso y directo con lo que hago, y en este caso no es la excepción. Por lo cual el diseño no es tan llamativo como en la versión anterior, pero cumple con su objetivo.",
+        ],
+        state: "Terminado"
     }
 ];
 
