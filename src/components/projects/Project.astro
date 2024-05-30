@@ -18,5 +18,10 @@ const {project}: Props = Astro.props;
                 </figure>
             ))}
         </div>
+        <div class={`w-full flex items-center justify-end font-mono font-extrabold capitalize
+            ${project.state === "Terminado" || project.state === "Finished" ? "text-green-600 dark:text-green-400": 
+            project.state === "En Proceso" || project.state === "In Progress" ? "text-yellow-600 dark:text-yellow-400": "text-red-600 dark:text-red-400"}`}>
+            <span class="text-xs sm:text-sm lg:text-base">{project.state}</span>
+        </div>
     </div>
 </a>

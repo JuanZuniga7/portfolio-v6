@@ -13,7 +13,6 @@ const profile: IProfile = {
         {label: "Home", href: "/"},
         {label: "About Me", href: "/about"},
         {label: "Projects", href: "/projects"},
-        {label: "Blog", href: "/blog"},
     ],
     icons:[
         {label: github, href: "https://github.com/JuanZuniga7"},
