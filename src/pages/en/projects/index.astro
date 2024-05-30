@@ -1,0 +1,17 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import profile from "../../../lang/en/profile";
+import SectionTitle from "../../../components/common/SectionTitle.astro";
+import project from "../../../lang/en/projects"
+import Project from "../../../components/projects/Project.astro";
+---
+<Layout lang="en" page_title="Projects" profile={profile}>
+    <div class="flex flex-col w-full h-full gap-5">
+        <div class="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl px-2"><SectionTitle title="Projects" /></div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-5 px-2">
+            {project.map((project) => (
+                <Project project={project} />
+            ))}
+        </div>
+    </div>
+</Layout>
